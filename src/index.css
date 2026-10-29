@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=Syne:wght@400..800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Instrument Serif', serif;
+  --font-sans: 'Figtree', sans-serif;
+  --font-head: 'Syne', sans-serif;
+  --color-ink: #0b0a09;
+  --color-ink-2: #14110f;
+  --color-ink-3: #1c1815;
+  --color-cream: #f6efe6;
+  --color-cream-2: #e8ddd0;
+  --color-gold: #c9a46c;
+  --color-gold-2: #e8c99a;
+  --color-blush: #e7c4b5;
+  --color-mute: #9c958c;
+  --color-line: rgb(246 239 230 / 12%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+body::before {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.display {
+  font-family: var(--font-display);
+}
+
+.head {
+  font-family: var(--font-head);
+}
+
+.gold-rule {
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgb(246 239 230 / 4%), rgb(246 239 230 / 1.5%));
+  border: 1px solid var(--color-line);
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.img-zoom {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.06);
+}
+
+.hero-section {
+  background:
+    radial-gradient(ellipse at 75% 30%, rgb(201 164 108 / 8%), transparent 35%),
+    linear-gradient(180deg, #0b0a09 0%, #100e0c 78%, #0b0a09 100%);
+}
+
+.hero-script {
+  font-weight: 400;
+  letter-spacing: -0.07em;
+}
+
+.hero-orb {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(100px);
+}
+
+.hero-orb-one {
+  top: 8rem;
+  right: -8rem;
+  width: 26rem;
+  height: 26rem;
+  background: rgb(201 164 108 / 9%);
+}
+
+.hero-orb-two {
+  top: 24rem;
+  left: -12rem;
+  width: 23rem;
+  height: 23rem;
+  background: rgb(231 196 181 / 7%);
+}
+
+.hero-image-frame img {
+  filter: saturate(0.82);
+  transition: filter 700ms ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-image-frame:hover img {
+  filter: saturate(1);
+  transform: scale(1.035);
+}
+
+.service-card {
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-card {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgb(201 164 108 / 45%);
+}
+
+.why-section::after {
+  content: '';
+  position: absolute;
+  right: -8rem;
+  top: -12rem;
+  width: 30rem;
+  height: 30rem;
+  border: 1px solid rgb(11 10 9 / 8%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2rem rgb(11 10 9 / 2%), 0 0 0 4rem rgb(11 10 9 / 2%);
+  pointer-events: none;
+}
+
+.testimonial-panel {
+  background:
+    radial-gradient(ellipse at 95% 0%, rgb(201 164 108 / 9%), transparent 42%),
+    linear-gradient(145deg, rgb(246 239 230 / 5%), rgb(246 239 230 / 1.5%));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
